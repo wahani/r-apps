@@ -1,4 +1,4 @@
-#!/usr/bin/env Rscript --vanilla
+#!/usr/bin/env Rscript
 # Author: Sebastian Warnholz
 # Email: Sebastian.Warnholz@inwt-statistics.de
 
