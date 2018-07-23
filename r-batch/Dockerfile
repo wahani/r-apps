@@ -12,16 +12,17 @@ RUN apt-get -y update \
     && rm -rf /var/lib/apt/lists/* \
     && R CMD javareconf \
     && installPackage \
-        rJava \
-        RMySQL \
-        dplyr \
+        codetools \
         data.table \
+        dplyr \
         futile.logger \
         gbm \
         ggplot2 \
         gridExtra \
         lme4 \
         mgcv \
+        rJava \
+        RMySQL \
         tidyr \
     && installGithub \
         INWT/dbtools \
