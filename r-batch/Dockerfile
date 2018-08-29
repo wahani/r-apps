@@ -6,7 +6,7 @@ RUN apt-get -y update \
         libbz2-dev \
         liblzma-dev \
         libpcre3-dev \
-        libmariadb-client-lgpl-dev \
+        libmysqlclient-dev \
     && apt-get autoremove -y \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/* \
