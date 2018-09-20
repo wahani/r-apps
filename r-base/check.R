@@ -12,6 +12,6 @@ if (!file.exists("DESCRIPTION")) {
 } else {
   cat("Looks like a package...\n"); Sys.sleep(1)
   devtools::install(dependencies = TRUE)
-  res <- devtools::check("~/projects/dat/")
+  res <- devtools::check(".")
   q(save = "no",  status = as.numeric(length(res$errors) > 0))
 }
