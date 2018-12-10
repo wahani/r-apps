@@ -41,6 +41,7 @@ RUN mv /includes/INWT-CA.crt /usr/local/share/ca-certificates/ \
     && touch /r-repo/src/contrib/PACKAGES \
     && echo "options(repos = c(getOption('repos'), LOCAL = 'file:////r-repo/'))" >> /usr/local/lib/R/etc/Rprofile.site \
     && echo "options(repos = c(getOption('repos'), INWT = 'https://inwt-vmeh2.inwt.de/r-repo/'))" >> /usr/local/lib/R/etc/Rprofile.site \
-    && echo "options(dratRepo = '/r-repo/')" >> /usr/local/lib/R/etc/Rprofile.site 
+    && echo "options(dratRepo = '/r-repo/')" >> /usr/local/lib/R/etc/Rprofile.site \
+    && chmod --recursive o+w /usr/local/lib/R/site-library
 
 CMD ["main"]
