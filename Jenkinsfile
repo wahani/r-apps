@@ -2,6 +2,9 @@
 pipeline {
     agent { label 'eh2' }
     options { disableConcurrentBuilds() }
+    triggers {
+        cron('H 0 * * *')
+    }
     environment {
         LABEL = sh(script: '''
         if [ $BRANCH_NAME = "master" ]; then
