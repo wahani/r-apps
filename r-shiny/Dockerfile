@@ -2,7 +2,8 @@ FROM inwt/r-batch:3.5.2
 
 EXPOSE 3838
 
-RUN installPackage \
+RUN installAutomake 1.16.1 \
+    && installPackage \
         htmlwidgets \
         DT \
         shiny \

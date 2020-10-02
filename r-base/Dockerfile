@@ -14,6 +14,7 @@ RUN mv /includes/INWT-CA.crt /usr/local/share/ca-certificates/ \
     && echo "Europe/Berlin" > /etc/timezone \
     && apt-get -y update \
     && apt-get install -y --no-install-recommends \
+        autoconf \
         less \
         libssl-dev \
         libssh2-1-dev \
@@ -25,6 +26,7 @@ RUN mv /includes/INWT-CA.crt /usr/local/share/ca-certificates/ \
         qpdf \
         wget \
         zlib1g-dev \
+    && apt-get install -y automake \
     && apt-get autoremove -y \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/* \
@@ -37,7 +39,9 @@ RUN mv /includes/INWT-CA.crt /usr/local/share/ca-certificates/ \
     && ln -s /includes/main.R /usr/local/bin/main \
     && ln -s /includes/installGithub.R /usr/local/bin/installGithub \
     && ln -s /includes/installPackage.R /usr/local/bin/installPackage \
-    && Rscript -e "install.packages(c('codetools', 'devtools', 'docopt', 'drat', 'modules', 'roxygen2', 'testthat'))" \
+    && ln -s /includes/installAutomake.sh /usr/local/bin/installAutomake \
+    && Rscript -e "options(warn = 2); install.packages('fs', repos = 'https://mran.microsoft.com/snapshot/2020-09-05')" \
+    && Rscript -e "options(warn = 2); install.packages(c('codetools', 'devtools', 'docopt', 'drat', 'modules', 'roxygen2', 'testthat'))" \
     && rm -rf /tmp/downloaded_packages/* \
     && mkdir -p /r-repo/src/contrib \
     && touch /r-repo/src/contrib/PACKAGES \
@@ -46,5 +50,3 @@ RUN mv /includes/INWT-CA.crt /usr/local/share/ca-certificates/ \
     && echo "options(dratRepo = '/r-repo/')" >> /usr/local/lib/R/etc/Rprofile.site  \
     && chmod --recursive o+w /usr/local/lib/R/site-library
 
-
-CMD ["main"]
