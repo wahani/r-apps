@@ -48,13 +48,5 @@ pipeline {
                 '''
             }
         }
-        stage('r-model') {
-            steps {
-                sh '''
-                docker build -t inwt/r-model:$LABEL r-model
-                docker push inwt/r-model:$LABEL
-                '''
-            }
-        }
     }
 }
