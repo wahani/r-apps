@@ -7,7 +7,7 @@ ENV OPENBLAS_NUM_THREADS 1
 ENV TZ "Europe/Berlin"
 ADD . /includes/
 
-RUN mv /includes/INWT-CA.crt /usr/local/share/ca-certificates/ \
+RUN mv -v /includes/*.crt /usr/local/share/ca-certificates/ \
     && dpkg-reconfigure ca-certificates \
     && rm /etc/localtime \
     && ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime \
